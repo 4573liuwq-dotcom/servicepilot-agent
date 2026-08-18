@@ -57,7 +57,6 @@ flowchart LR
 
 LangGraph 管理整个业务状态和路由；LangChain 负责模型适配与 Pydantic 结构化输出；SQLite 模拟订单、退款、工单与审计数据库；知识库 RAG 提供可引用的售后政策。
 
-## 为什么适合大模型实习简历
 
 项目同时覆盖了招聘中常见的四类能力：
 
