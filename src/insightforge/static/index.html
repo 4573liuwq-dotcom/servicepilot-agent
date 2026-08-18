@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ServicePilot · 电商售后 Agent</title><link rel="stylesheet" href="/static/styles.css"><link rel="stylesheet" href="/static/idempotency.css?v=2"></head>
+<body>
+<div class="shell support-shell">
+  <aside>
+    <div class="brand"><span>SP</span><strong>ServicePilot</strong></div>
+    <p class="muted">AI After-sales Copilot</p>
+    <nav><button class="nav active">智能接待</button><a class="nav" href="/docs" target="_blank">API 文档 ↗</a></nav>
+    <div class="demo-orders">
+      <p class="eyebrow">DEMO ORDERS</p>
+      <button data-message="查询订单 EC2026002 的物流到哪了">EC2026002 <small>运输中 · ¥89</small></button>
+      <button data-message="订单 EC2026001 的耳机不想要了，帮我退款">EC2026001 <small>已签收 · ¥299</small></button>
+      <button data-message="订单 EC2026003 的椅子有损坏，我要退货退款">EC2026003 <small>超七天 · ¥1299</small></button>
+    </div>
+    <div class="system-card"><span class="pulse"></span><div><strong id="mode">Agent 在线</strong><small id="chunks">政策库加载中</small></div></div>
+  </aside>
+  <main class="support-main">
+    <header><div><p class="eyebrow">AFTER-SALES WORKSPACE</p><h1>电商售后智能客服</h1><p class="muted">查订单、判政策、控风险、执行退款——一次对话完成售后闭环</p></div><span class="live-badge">● Demo 环境</span></header>
+    <section class="workflow-strip">
+      <span>① 意图识别</span><b>→</b><span>② 订单查询</span><b>→</b><span>③ 政策 RAG</span><b>→</b><span>④ 风控审批</span><b>→</b><span>⑤ 执行动作</span>
+    </section>
+    <section class="chat-card">
+      <div id="chat" class="chat">
+        <div class="message agent"><div class="avatar">AI</div><div><strong>ServicePilot</strong><p>你好，我可以查询订单和物流、判断退换货政策、创建工单并发起退款。请告诉我订单号和遇到的问题。</p></div></div>
+      </div>
+      <div id="approvalCard" class="approval-card hidden"><div><strong>需要人工审批</strong><p id="approvalText"></p></div><div><button id="reject">拒绝</button><button id="approve">批准退款</button></div></div>
+      <div class="composer"><textarea id="message" rows="2" placeholder="输入售后问题，例如：订单 EC2026001 的耳机不想要了，帮我退款"></textarea><button id="send">发送 <b>→</b></button></div>
+    </section>
+    <section id="detail" class="detail-grid hidden">
+      <div class="detail-card"><p class="eyebrow">ORDER CONTEXT</p><div id="orderDetail"></div></div>
+      <div class="detail-card"><p class="eyebrow">AGENT DECISION</p><div id="decisionDetail"></div></div>
+      <div class="detail-card"><p class="eyebrow">ACTION RESULT</p><div id="actionDetail"></div></div>
+    </section>
+    <section id="idempotencyProof" class="idempotency-proof hidden">
+      <div><p class="eyebrow">IDEMPOTENCY CHECK</p><strong>重复退款保护</strong><p id="idempotencyText">使用相同thread_id重放请求，验证不会产生第二条退款。</p></div>
+      <button id="retryRefund">验证重复提交</button>
+    </section>
+  </main>
+</div>
+<script src="/static/app.js?v=2"></script>
+</body></html>

@@ -1,0 +1,5 @@
+.idempotency-proof{margin-top:12px;background:#eef8f2;border:1px solid #c7e3d2;border-radius:12px;padding:13px 17px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.idempotency-proof p{margin:2px 0;color:#53675d;font-size:12px}
+.idempotency-proof strong{font-size:14px}
+.idempotency-proof button{border:0;border-radius:9px;background:#1d6b4f;color:#fff;padding:10px 15px;font-weight:700;cursor:pointer;white-space:nowrap}
+.idempotency-proof button:disabled{opacity:.65}

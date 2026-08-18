@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "service_pilot": "./src/insightforge/support/graph.py:support_graph",
+    "research_agent": "./src/insightforge/agents/graph.py:graph"
+  },
+  "env": ".env"
+}
